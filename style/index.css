@@ -4,7 +4,20 @@ html {
     margin: 0;
     padding: 0;
 }
-body{}
+
+h1 {
+    color: white;
+}
+.card{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: #272727;
+    border: 1px solid #505050;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #272727;
+    transition: all 0.3s ease;
+}
 .card_container{
     display: flex;
     width: 98%;
@@ -28,23 +41,34 @@ body{}
     flex-direction: column;
     width: 600px;
 }
-.card{
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    background-color: #272727;
-    border: 1px solid #505050;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #272727;
-    transition: all 0.3s ease;
-}
-h1 {
-    color: white;
-}
 input{
     color: #212121;
     background-color: #1c1c1c;
     border: 1px solid #505050;
     border-radius: 3px;
     margin: 10px;
+}
+button{
+    color: white;
+    background-color: #232323;
+    border: 1px solid #505050;
+    border-radius: 3px;
+    margin: 10px;
+    width: 100px;
+}
+
+/* Interaction */
+
+.card:hover{
+    box-shadow: 0 0 10px #505050;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.card:active{
+    transform: scale(1);
+    transition: all 0.2s ease;
+}
+.checked{
+    box-shadow: 0 0 10px #505050;
+    transform: scale(1.05);
 }
