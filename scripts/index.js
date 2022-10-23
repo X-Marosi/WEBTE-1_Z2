@@ -1,5 +1,5 @@
 console.log('Script loaded');
-
+//fuck ammends
 const form = document.getElementById('form');
 const name = document.getElementById('name');
 const surname = document.getElementById('surname');
