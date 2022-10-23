@@ -161,8 +161,6 @@ function checkInputs() {
 
 }
 
-
-
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
@@ -175,7 +173,131 @@ function setSuccessFor(input) {
     formControl.className = 'validation valid';
 }
 
-
 function isEmail(email) {
     return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
+
+
+// get all 3 <SELECT> elements
+const selectOption1 = document.getElementById('option1');
+const selectOption2 = document.getElementById('option2');
+const selectOption3 = document.getElementById('option3');
+// when ITEM is SELECTED
+selectOption1.addEventListener('change', function() {
+    changeDropdownList1(selectOption1,selectOption2);
+    changeDropdownList2(selectOption2,selectOption3,selectOption1);
+});
+selectOption2.addEventListener('change', function() {
+    changeDropdownList2(selectOption2,selectOption3,selectOption1);
+});
+// add LIST ELEMENTS to second <SELECT> based on SELECTED ITEM in the first <SELECT>
+function changeDropdownList1(selectOption1,selectOption2) {
+
+    const option1 = selectOption1.value;
+
+    if(option1 === '1'){
+        selectOption2.innerHTML = [
+            '<option value="0">SELECT SWITCH:</option>',
+            '<option value="0">Holy Panda</option>',
+            '<option value="1">Gateron Black</option>',
+            '<option value="2">Cherry MX Brown</option>',
+            '<option value="3">Cherry MX Red</option>',
+            '<option value="4">Cherry MX Blue</option>',
+            '<option value="5">Cherry MX Silver</option>'
+        ];
+        selectOption2.classList.add('active');
+    }
+    else if(option1 === '2'){
+        selectOption2.innerHTML = [
+            '<option value="0">SELECT MATERIAL:</option>',
+            '<option value="1">Aluminium</option>',
+            '<option value="2">Acrylic </option>',
+            '<option value="3">Plastic BLACK</option>',
+            '<option value="4">Plastic WHITE </option>',
+            '<option value="5">Plastic BLACK w/ RGB strip</option>',
+            '<option value="6">Plastic WHITE w/ RGB strip</option>'
+        ];
+        selectOption2.classList.add('active');
+    }
+    else if(option1 === '3'){
+        selectOption2.innerHTML = [
+            '<option value="0">MATERIAL:</option>',
+            '<option value="1">ABS</option>',
+            '<option value="2">PBT </option>',
+            '<option value="3">POM</option>'
+        ];
+        selectOption2.classList.add('active');
+    }
+    else {
+        selectOption2.classList.remove('active');
+        selectOption3.classList.remove('active');
+    }
+}
+
+function changeDropdownList2(selectOption1,selectOption2, selectParent) {
+
+    const selectParentValue = selectParent.value;
+    const selectOption1Value = selectOption1.value;
+
+    if(selectParentValue === '1') {
+        selectOption2.innerHTML = [
+            '<option value="0">AMOUNT:</option>',
+            '<option value="1">x30</option>',
+            '<option value="2">x60</option>',
+            '<option value="3">x120</option>'
+        ];
+        selectOption2.classList.add('active');
+    }
+    else if(selectParentValue === '2'){
+        selectOption2.innerHTML = [
+            '<option value="0">TYPE:</option>',
+            '<option value="1">FULL BOARD</option>',
+            '<option value="0">TKL</option>',
+            '<option value="0">60%</option>'
+        ];
+        selectOption2.classList.add('active');
+    }
+    else if(selectParentValue === '3'){
+
+        if ( selectOption1Value === '1') {
+            selectOption2.innerHTML = [
+                '<option value="0">SELECT ABS KEYCAPS:</option>',
+                '<option value="1">Keychron Doubleshot ABS Light Grey</option>',
+                '<option value="0">Keychron Doubleshot ABS Retro</option>',
+                '<option value="0">Keychron Doubleshot ABS Blue and White</option>'
+            ];
+            selectOption2.classList.add('active');
+        }
+        else if ( selectOption1Value === '2') {
+            selectOption2.innerHTML = [
+                '<option value="0">SELECT PBT KEYCAPS:</option>',
+                '<option value="1">HyperX Pudding PBT Doubleshot WHITE</option>',
+                '<option value="0">HyperX Pudding PBT Doubleshot BLACK</option>',
+                '<option value="0">YMDK Carbon 108 Cherry Keycaps</option>',
+                '<option value="0">Blank White Thick PBT Keycaps</option>'
+            ];
+            selectOption2.classList.add('active');
+        }
+        else if ( selectOption1Value === '3') {
+            selectOption2.innerHTML = [
+                '<option value="0">SELECT POM KEYCAPS:</option>',
+                '<option value="1">POM Jelly Sugarcube</option>',
+                '<option value="0">POM Jelly Strawberry</option>',
+                '<option value="0">POM Ink Alpha kit</option>',
+                '<option value="0">POM Ink Alpha kit (side etch)</option>',
+                '<option value="0">POM Ink Mod kit</option>',
+                '<option value="0">POM Ash Alpha kit</option>',
+                '<option value="0">POM Ash Alpha kit (side etch_</option>',
+                '<option value="0">POM Ash Mod kit</option>'
+            ];
+            selectOption2.classList.add('active');
+        }
+        else {
+            selectOption2.classList.remove('active');
+        }
+    }
+}
+
+
+
+

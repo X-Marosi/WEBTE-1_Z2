@@ -24,6 +24,7 @@ h1{
     color: #fff;
     text-align: center;
     margin-bottom: 0;
+    cursor: default;
 }
 
 img {
@@ -43,6 +44,7 @@ h2{
     color: #fff;
     border-bottom: 1px solid #fff;
     width: 150px;
+    cursor: default;
 
 }
 
@@ -65,6 +67,9 @@ h2{
     width: 400px;
 }
 
+small {
+    cursor: default;
+}
 
 .validation small {
     color: #e74c3c;
@@ -109,11 +114,22 @@ select {
     background-color: rgba(0, 0, 0, 0.09);
 }
 
+
+
+.specificationList {
+    visibility: hidden;
+}
+
+.specificationList.active {
+    visibility: visible;
+}
+
+
 option {
-    color: white;
     font-size: 0.9em;
     font-family: inherit;
     background: #1c1c1c;
+    color: darkorange;
 
 }
 
@@ -158,6 +174,7 @@ input[type=radio] + label:before{
 }
 input[type=radio]:checked + label:before{
     background-color: darkorange;
+    border-color: transparent;
 }
 
 input[type=checkbox] + label:before{
