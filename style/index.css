@@ -3,6 +3,13 @@
     src: url('../style/fonts/CODE Light.otf');
 }
 
+::selection {
+    background: darkorange; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: darkorange; /* Gecko Browsers */
+}
+
 html {
 
     font-family: "Microsoft JhengHei Light", Arial, sans-serif;
@@ -150,7 +157,7 @@ input[type=radio] + label:before{
     border: #8f8f8f 1px solid;
 }
 input[type=radio]:checked + label:before{
-    background-color: #fff;
+    background-color: darkorange;
 }
 
 input[type=checkbox] + label:before{
@@ -162,6 +169,7 @@ input[type=checkbox] + label:before{
     background-color: #111111;
 }
 input[type=checkbox]:checked + label:before{
+    color: darkorange;
     content: "\2713";
     border: transparent;
     background-color: transparent;
@@ -201,24 +209,38 @@ input[type=checkbox]:checked + label:before{
     font-family: inherit;
 }
 button {
-    width: 50%;
-    height: 10%;
+    width: 92%;
+    height: 5%;
     border: none;
-    background: #111111;
-    color: #fff;
-    font-size: 1.1em;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-size: 1em;
     padding: 10px 0;
     font-family: inherit;
     cursor: pointer;
-    margin: auto;
+    display: block;
 }
 
+button:hover {
+    background-color: darkorange;
+    color: #111111;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+button:focus {
+    outline: none;
+    background-color: darkorange;
+    color: #111111;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
 
 select:focus {
     outline: none;
     transform: scale(1.1);
     transition: 0.3s;
-    border-bottom: rgba(255, 255, 255, 0.11) 2px solid;
+    border-bottom: darkorange 2px solid;
 }
 
 .textBox{
@@ -238,7 +260,7 @@ input:focus {
     outline: none;
     transform: scale(1.1);
     transition: 0.3s;
-    border-bottom: rgba(255, 255, 255, 0.11) 2px solid;
+    border-bottom: darkorange 2px solid;
 }
 
 
