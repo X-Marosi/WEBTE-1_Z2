@@ -1,74 +1,248 @@
+@font-face {
+    font-family: 'Technical';
+    src: url('../style/fonts/CODE Light.otf');
+}
+
 html {
-    font-family: Optima, Segoe, "Segoe UI", sans-serif;
-    background-color: #272727;
+
+    font-family: "Microsoft JhengHei Light", Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background: #1c1c1c linear-gradient(#2d2d2d, #1c1c1c) no-repeat;
+    color: #fff;
+}
+h1{
+    font-family: 'Technical', sans-serif;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0;
 }
 
-h1 {
-    color: white;
+img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    filter: invert(100%);
+
 }
-.card{
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    background-color: #272727;
-    border: 1px solid #505050;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #272727;
-    transition: all 0.3s ease;
+
+h2{
+    font-family: 'Technical', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    width: 150px;
+
 }
-.card_container{
+
+
+.form {
+    margin: 0;
+    padding-bottom: 50px;
+    width: 100%;
     display: flex;
-    width: 98%;
-    justify-content: center;
     flex-wrap: wrap;
-}
-.form_container{
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    margin: auto;
     justify-content: center;
 }
-.form_container_left {
-    display: flex;
-    flex-direction: column;
+
+.left {
+    /*border: 1px solid #00ff00;*/
     width: 400px;
 }
-.form_container_right {
-    display: flex;
-    flex-direction: column;
-    width: 600px;
+.right {
+    /*border: 1px solid #0000ff;*/
+    width: 400px;
 }
-input{
-    color: #212121;
-    background-color: #1c1c1c;
-    border: 1px solid #505050;
-    border-radius: 3px;
-    margin: 10px;
+
+
+.validation small {
+    color: #e74c3c;
+    visibility: hidden;
+    padding-left: 8px;
 }
-button{
+
+
+.validation.valid input {
+    border-bottom: 2px solid #2ecc71;
+}
+
+.validation.valid select {
+    border-bottom: 2px solid #2ecc71;
+}
+
+.validation.error input {
+    border-bottom: 2px solid #e74c3c;
+}
+
+.validation.error select {
+    border-bottom: 2px solid #e74c3c;
+}
+
+
+.validation.error small {
+    visibility: visible;
+}
+
+.optional {
+    color: #8f8f8f;
+    padding-left: 15px;
+    visibility: visible;
+}
+
+select {
+    width: 92%;
+    border: none;
+    color: #797979;
+    font-size: 1.1em;
+    font-family: inherit;
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+option {
     color: white;
-    background-color: #232323;
-    border: 1px solid #505050;
-    border-radius: 3px;
-    margin: 10px;
-    width: 100px;
+    font-size: 0.9em;
+    font-family: inherit;
+    background: #1c1c1c;
+
 }
 
-/* Interaction */
+.date {
+    width: 92%;
+    border: none;
+    color: #797979;
+    font-size: 1.1em;
+    font-family: inherit;
+    background: rgba(0, 0, 0, 0.09);
 
-.card:hover{
-    box-shadow: 0 0 10px #505050;
-    transform: scale(1.05);
+}
+
+
+.payment {
+
+    width: 92%;
+    border: none;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-family: inherit;
+    background: transparent;
+}
+
+.paymentOptions {
+    margin-bottom: 20px;
+}
+
+input[type=radio], input[type=checkbox] {
+    /* Hide original inputs */
+    visibility: hidden;
+    position: absolute;
+}
+input[type=radio] + label:before{
+    height:12px;
+    width:12px;
+    margin-right: 8px;
+    content: "";
+    display:inline-block;
+    border-radius: 8px;
+    border: #8f8f8f 1px solid;
+}
+input[type=radio]:checked + label:before{
+    background-color: #fff;
+}
+
+input[type=checkbox] + label:before{
+    height:14px;
+    width:14px;
+    margin-right: 8px;
+    content: "";
+    display:inline-block;
+    background-color: #111111;
+}
+input[type=checkbox]:checked + label:before{
+    content: "\2713";
+    border: transparent;
+    background-color: transparent;
+
+}
+
+.expDate {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.numBox {
+    width: 50px;
+    height: 30px;
+    border: none;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-family: inherit;
+    background: rgba(0, 0, 0, 0.09);
+    margin-right: 10px;
+}
+.numBoxWide{
+    width: 300px;
+    height: 30px;
+    border: none;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-family: inherit;
+    background: rgba(0, 0, 0, 0.09);
+    margin-right: 10px;
+}
+
+.textLabel {
+    color: #797979;
+    font-size: 1.1em;
+    font-family: inherit;
+}
+button {
+    width: 50%;
+    height: 10%;
+    border: none;
+    background: #111111;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px 0;
+    font-family: inherit;
     cursor: pointer;
+    margin: auto;
 }
-.card:active{
-    transform: scale(1);
-    transition: all 0.2s ease;
+
+
+select:focus {
+    outline: none;
+    transform: scale(1.1);
+    transition: 0.3s;
+    border-bottom: rgba(255, 255, 255, 0.11) 2px solid;
 }
-.checked{
-    box-shadow: 0 0 10px #505050;
-    transform: scale(1.05);
+
+.textBox{
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.09);
+    border-color: transparent;
+    margin: 10px;
+    font-size: 1.1em;
+    font-family: inherit;
+}
+
+::placeholder {
+    color: #797979;
+}
+
+input:focus {
+    outline: none;
+    transform: scale(1.1);
+    transition: 0.3s;
+    border-bottom: rgba(255, 255, 255, 0.11) 2px solid;
+}
+
+
+.textBox {
+    width: 90%;
+    margin: 0;
 }
