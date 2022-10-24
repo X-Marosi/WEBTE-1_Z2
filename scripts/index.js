@@ -6,7 +6,7 @@ const surname = document.getElementById('surname');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const email = document.getElementById('email');
-const age = document.getElementById('age');
+let age = document.getElementById('age');
 const birthDate = document.getElementById('birthDate');
 const tel1 = document.getElementById('tel1');
 const tel2 = document.getElementById('tel2');
@@ -86,6 +86,12 @@ function checkInputs() {
     else if(isNaN(ageValue)) {
         setErrorFor(age, 'Age must be a number');
     }
+    else if(ageFromDate(birthDateValue) !== parseInt(ageValue)) {
+        setErrorFor(age, 'Age does not match birth date');
+        console.log(ageFromDate(birthDateValue));
+        console.log(ageValue);
+
+    }
     else {
         setSuccessFor(age);
     }
@@ -158,6 +164,7 @@ function checkInputs() {
     if(!checkboxTermsValue) {
         setErrorFor(checkboxTerms, 'Required');
     }
+
 
 }
 
@@ -369,3 +376,13 @@ transfer.addEventListener('click', function() {
 });
 
 
+function ageFromDate(birthday) {
+    const today = new Date();
+    const birthDate = new Date(birthday);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
