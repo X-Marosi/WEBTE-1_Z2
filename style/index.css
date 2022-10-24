@@ -220,6 +220,30 @@ input[type=checkbox]:checked + label:before{
     margin-right: 10px;
 }
 
+.paymentCard{
+    display: none;
+}
+
+.paymentCard.active {
+    display: block;
+}
+
+.paymentPayPal {
+    display: none;
+}
+
+.paymentPayPal.active {
+    display: block;
+}
+
+.paymentBank {
+    display: none;
+}
+
+.paymentBank.active {
+    display: block;
+}
+
 .textLabel {
     color: #797979;
     font-size: 1.1em;
@@ -232,6 +256,7 @@ button {
     background: rgba(0, 0, 0, 0.5);
     color: #ffffff;
     font-size: 1em;
+    margin-top: 20px;
     padding: 10px 0;
     font-family: inherit;
     cursor: pointer;

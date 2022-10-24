@@ -203,57 +203,52 @@
 
                     </div>
 
-                    <div class="validation">
+                    <div class="validation paymentCard">
                         <label for="cardNumber"></label>
-                        <input type="text" class="textBox" id="cardNumber" placeholder="CARD NUMBER:">
+                        <input type="text" class="textBox paymentCard" id="cardNumber" placeholder="CARD NUMBER:">
                         <small>Error message</small>
                     </div>
 
-                    <div class="validation">
+                    <div class="validation paymentCard">
                         <label for="cardHolder"></label>
-                        <input type="text"  class="textBox" id="cardHolder" placeholder="CARD HOLDER:">
+                        <input type="text"  class="textBox paymentCard" id="cardHolder" placeholder="CARD HOLDER:">
                         <small>Error message</small>
                     </div>
 
-                    <div class="validation">
-                        <label class="textLabel" for="expDateMonth">EXP. DATE:</label>
+                    <div class="validation paymentCard">
+                        <label class="textLabel paymentCard" for="expDateMonth" id="expDateLabel">EXP. DATE:</label>
                         <div class="expDate">
 
-                            <input type="text" class="numBox" id="expDateMonth" placeholder="MM">
+                            <input type="text" class="numBox paymentCard" id="expDateMonth" placeholder="MM">
                             <label for="expDateYear"></label>
-                            <input type="text" class="numBox" id="expDateYear" placeholder="YY">
+                            <input type="text" class="numBox paymentCard" id="expDateYear" placeholder="YY">
                         </div>
 
                         <small>Error message</small>
                     </div>
 
-                    <div class="validation">
+                    <div class="validation paymentCard">
                         <label for="cvv"></label>
-                        <input type="text" class="textBox" id="cvv" placeholder="CVV:">
+                        <input type="text" class="textBox paymentCard" id="cvv" placeholder="CVV:">
                         <small>Error message</small>
                     </div>
 
 
-                    <div>
+                    <div class="paymentCard" id="saveInfo">
                         <input type="checkbox" id="checkboxSaveCard">
                         <label for="checkboxSaveCard">Save my card information for later</label>
                         <small class="optional"> (Optional) </small>
                     </div>
 
-                    <div class="validation">
-                        <input type="checkbox" id="checkboxCode">
-                        <label for="checkboxCode">I have a discount code</label>
-                        <small class="optional"> (Optional) </small>
-                    </div>
-                    <div class="validation">
-                        <label for="discountCode"></label>
-                        <input type="text" class="textBox" id="discountCode" placeholder="PROMO CODE:">
-                        <small>Error message</small>
-                    </div>
+
+                    <button class="paymentPayPal" id="paymentPayPal" type="button">
+                        PayPal
+                    </button>
+
+                    <p class="textBox paymentBank" id="paymentBank">IBAN 3128 2136 3667 4334</p>
 
 
-
-                    <button type="submit">Submit</button>
+                    <button type="submit">PLACE ORDER</button>
                 </div>
 
             </form>

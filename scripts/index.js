@@ -298,6 +298,74 @@ function changeDropdownList2(selectOption1,selectOption2, selectParent) {
     }
 }
 
+const creditCard = document.getElementById('creditCard');
+const cardNumber = document.getElementById('cardNumber');
+const cardHolder = document.getElementById('cardHolder');
+const expDateLabel = document.getElementById('expDateLabel');
+const expDateMonth = document.getElementById('expDateMonth');
+const expDateYear = document.getElementById('expDateYear');
+const cvv = document.getElementById('cvv');
+const saveInfo = document.getElementById('saveInfo');
 
+creditCard.addEventListener('click', function() {
+
+    paymentPayPal.classList.remove('active');
+    paymentBank.classList.remove('active');
+
+    cardNumber.classList.add('active');
+    cardNumber.parentElement.classList.add('active');
+    cardHolder.classList.add('active');
+    cardHolder.parentElement.classList.add('active');
+    expDateLabel.classList.add('active');
+    expDateLabel.parentElement.classList.add('active');
+    expDateMonth.classList.add('active');
+    expDateYear.classList.add('active');
+    cvv.classList.add('active');
+    cvv.parentElement.classList.add('active');
+    saveInfo.classList.add('active');
+});
+
+const paypal = document.getElementById('paypal');
+const paymentPayPal = document.getElementById('paymentPayPal');
+
+paypal.addEventListener('click', function() {
+
+    paymentBank.classList.remove('active');
+    cardNumber.classList.remove('active');
+    cardNumber.parentElement.classList.remove('active');
+    cardHolder.classList.remove('active');
+    cardHolder.parentElement.classList.remove('active');
+    expDateLabel.classList.remove('active');
+    expDateLabel.parentElement.classList.remove('active');
+    expDateMonth.classList.remove('active');
+    expDateYear.classList.remove('active');
+    cvv.classList.remove('active');
+    cvv.parentElement.classList.remove('active');
+    saveInfo.classList.remove('active');
+
+    paymentPayPal.classList.add('active');
+});
+
+const transfer = document.getElementById('transfer');
+const paymentBank = document.getElementById('paymentBank');
+
+transfer.addEventListener('click', function() {
+
+
+        paymentPayPal.classList.remove('active');
+        cardNumber.classList.remove('active');
+        cardNumber.parentElement.classList.remove('active');
+        cardHolder.classList.remove('active');
+        cardHolder.parentElement.classList.remove('active');
+        expDateLabel.classList.remove('active');
+        expDateLabel.parentElement.classList.remove('active');
+        expDateMonth.classList.remove('active');
+        expDateYear.classList.remove('active');
+        cvv.classList.remove('active');
+        cvv.parentElement.classList.remove('active');
+        saveInfo.classList.remove('active');
+
+        paymentBank.classList.add('active');
+});
 
 
