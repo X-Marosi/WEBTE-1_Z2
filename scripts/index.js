@@ -1,5 +1,4 @@
 console.log('Script loaded');
-
 const form = document.getElementById('form');
 const name = document.getElementById('name');
 const surname = document.getElementById('surname');
@@ -16,85 +15,111 @@ const city = document.getElementById('city');
 const address = document.getElementById('address');
 const zip = document.getElementById('zip');
 const checkboxTerms = document.getElementById('checkboxTerms');
+const selectOption1 = document.getElementById('option1');
+const selectOption2 = document.getElementById('option2');
+const selectOption3 = document.getElementById('option3');
+const creditCard = document.getElementById('creditCard');
+const cardNumber = document.getElementById('cardNumber');
+const cardHolder = document.getElementById('cardHolder');
+const expDateLabel = document.getElementById('expDateLabel');
+const expDateMonth = document.getElementById('expDateMonth');
+const expDateYear = document.getElementById('expDateYear');
+const cvv = document.getElementById('cvv');
+const saveInfo = document.getElementById('saveInfo');
+const transfer = document.getElementById('transfer');
+const paymentBank = document.getElementById('paymentBank');
+const paypal = document.getElementById('paypal');
+const paymentPayPal = document.getElementById('paymentPayPal');
+const checkboxCode = document.getElementById('checkboxCode');
+const discountCode = document.getElementById('discountCode');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    checkInputs();
-})
-
-function checkInputs() {
-
+function checkName(){
     const nameValue = name.value.trim();
-    const surnameValue = surname.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
-    const ageValue = age.value.trim();
-    const birthDateValue = birthDate.value.trim();
-    const phone1Value = tel1.value.trim();
-    const phone2Value = tel2.value.trim();
-    const genderValue = gender.value;
-    const countryValue = country.value;
-    const cityValue = city.value.trim();
-    const addressValue = address.value.trim();
-    const zipValue = zip.value.trim();
-    const checkboxTermsValue = checkboxTerms.checked;
-
 
     if(nameValue === '' || nameValue === null) {
         setErrorFor(name, 'Name cannot be blank');
-    } else {
+    }
+    else if (!isNaN(nameValue)) {
+        setErrorFor(name, 'Name cannot be a number');
+    }
+    else if (nameValue.length > 20) {
+        setErrorFor(name, 'Name cannot be longer than 20 characters');
+    }
+    else if(nameValue.length < 2) {
+        setErrorFor(name, 'Name cannot be only 1 character');
+    }
+    else {
         setSuccessFor(name);
     }
+}
+function checkSurname(){
+    const surnameValue = surname.value.trim();
 
     if(surnameValue === '' || surnameValue === null) {
         setErrorFor(surname, 'Surname cannot be blank');
     }
+    else if (!isNaN(surnameValue)) {
+        setErrorFor(surname, 'Surname cannot be a number');
+    }
+    else if (surnameValue.length > 20) {
+        setErrorFor(surname, 'Surname cannot be longer than 20 characters');
+    }
+    else if (surnameValue.length < 2) {
+        setErrorFor(surname, 'Surname cannot be only 1 character');
+    }
     else {
         setSuccessFor(surname);
     }
+}
+
+function checkPassword(){
+    const passwordValue = password.value.trim();
 
     if(passwordValue === '' || passwordValue === null) {
         setErrorFor(password, 'Password cannot be blank');
     }
+    else if(passwordValue.length < 6) {
+        setErrorFor(password, 'Password must be at least 6 characters');
+    }
+    else if (passwordValue.length > 20) {
+        setErrorFor(password, 'Password cannot be longer than 20 characters');
+    }
     else {
         setSuccessFor(password);
     }
+}
+
+function checkPassword2(){
+    const password2Value = password2.value.trim();
+    const passwordValue = password.value.trim();
 
     if(password2Value === '' || password2Value === null) {
         setErrorFor(password2, 'Password cannot be blank');
     }
-    else if(passwordValue !== password2Value) {
+    else if(password2Value !== passwordValue) {
         setErrorFor(password2, 'Passwords do not match');
     }
     else {
         setSuccessFor(password2);
     }
+}
+
+function checkEmail(){
+    const emailValue = email.value.trim();
 
     if(emailValue === '' || emailValue === null) {
         setErrorFor(email, 'Email cannot be blank');
-    } else if (!isEmail(emailValue)) {
+    }
+    else if(!isEmail(emailValue)) {
         setErrorFor(email, 'Email is not valid');
     }
     else {
         setSuccessFor(email);
     }
+}
 
-    if(ageValue === '' || ageValue === null) {
-        setErrorFor(age, 'Age cannot be blank');
-    }
-    else if(isNaN(ageValue)) {
-        setErrorFor(age, 'Age must be a number');
-    }
-    else if(ageFromDate(birthDateValue) !== parseInt(ageValue)) {
-        setErrorFor(age, 'Age does not match birth date');
-        console.log(ageFromDate(birthDateValue));
-        console.log(ageValue);
-
-    }
-    else {
-        setSuccessFor(age);
-    }
+function checkBirthDate(){
+    const birthDateValue = birthDate.value.trim();
 
     if(birthDateValue === '' || birthDateValue === null) {
         setErrorFor(birthDate, 'Birth date cannot be blank');
@@ -102,6 +127,11 @@ function checkInputs() {
     else {
         setSuccessFor(birthDate);
     }
+}
+
+function checkTel(){
+    const phone1Value = tel1.value.trim();
+    const phone2Value = tel2.value.trim();
 
     if((phone1Value === '' || phone1Value === null) && (phone2Value === '' || phone2Value === null)) {
         setErrorFor(tel1, 'Phone number cannot be blank');
@@ -119,20 +149,63 @@ function checkInputs() {
         setSuccessFor(tel1);
     }
 
-    if (genderValue === '0' || genderValue === null) {
-        setErrorFor(gender, 'Gender must be selected');
+}
+
+function checkAge(){
+    const ageValue = age.value.trim();
+    const birthDateValue = birthDate.value.trim();
+
+    if(ageValue === '' || ageValue === null) {
+        setErrorFor(age, 'Age cannot be blank');
+    }
+
+    else if(ageFromDate(birthDateValue) !== parseInt(ageValue)) {
+        setErrorFor(age, 'Age does not match birth date');
+        console.log(ageFromDate(birthDateValue));
+        console.log(ageValue);
 
     }
-    else {
-        setSuccessFor(gender);
+    else if (ageValue < 12) {
+        setErrorFor(age, 'Age must be at least 12');
     }
+    else if (ageValue > 120) {
+        setErrorFor(age, 'ㅤGo lay back in your sarcophagus');
+    }
+    else {
+        setSuccessFor(age);
+    }
+}
 
-    if (countryValue === '0' || countryValue === null) {
-        setErrorFor(country, 'Country must be selected');
+function checkGender(){
+    const addressValue = address.value.trim();
+
+    if(addressValue === '' || addressValue === null) {
+        setErrorFor(address, 'Address cannot be blank');
+    }
+    else if (addressValue.length > 50) {
+        setErrorFor(address, 'Address cannot be longer than 50 characters');
     }
     else {
-        setSuccessFor(country);
+        setSuccessFor(address);
     }
+}
+
+function checkZip(){
+    const zipValue = zip.value.trim();
+
+    if(zipValue === '' || zipValue === null) {
+        setErrorFor(zip, 'Zip code cannot be blank');
+    }
+    else if (zipValue.length !== 5) {
+        setErrorFor(zip, 'Zip code must be exactly 5 characters');
+    }
+    else {
+        setSuccessFor(zip);
+    }
+}
+
+function checkCity(){
+    const cityValue = city.value.trim();
 
     if(cityValue === '' || cityValue === null) {
         setErrorFor(city, 'City cannot be blank');
@@ -140,32 +213,59 @@ function checkInputs() {
     else if (!isNaN(cityValue)) {
         setErrorFor(city, 'City cannot be a number');
     }
+    else if (cityValue.length > 20) {
+        setErrorFor(city, 'City cannot be longer than 20 characters');
+    }
+    else if (cityValue.length < 2) {
+        setErrorFor(city, 'City cannot be only 1 character');
+    }
     else {
         setSuccessFor(city);
     }
+}
+
+function checkAddress(){
+    const addressValue = address.value.trim();
 
     if(addressValue === '' || addressValue === null) {
         setErrorFor(address, 'Address cannot be blank');
     }
+    else if (addressValue.length > 50) {
+        setErrorFor(address, 'Address cannot be longer than 50 characters');
+    }
     else {
         setSuccessFor(address);
     }
+}
 
-    if(zipValue === '' || zipValue === null) {
-        setErrorFor(zip, 'Zip code cannot be blank');
+function checkCountry() {
+    const countryValue = country.value;
+    if (countryValue === '0' || countryValue === null) {
+        setErrorFor(country, 'Country must be selected');
+    } else {
+        setSuccessFor(country);
     }
-    else if(isNaN(zipValue)) {
-        setErrorFor(zip, 'Zip code must be a number');
-    }
-    else {
-        setSuccessFor(zip);
-    }
+}
 
+function checkInputs() {
+    checkName();
+    checkSurname();
+    checkPassword();
+    checkPassword2();
+    checkEmail();
+    checkBirthDate();
+    checkTel();
+    checkAge();
+    checkGender();
+    checkCountry();
+    checkCity();
+    checkAddress();
+    checkZip();
+
+    const checkboxTermsValue = checkboxTerms.checked;
     if(!checkboxTermsValue) {
         setErrorFor(checkboxTerms, 'Required');
     }
-
-
 }
 
 function setErrorFor(input, message) {
@@ -181,25 +281,9 @@ function setSuccessFor(input) {
 }
 
 function isEmail(email) {
-    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    return /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]{3,}@([a-zA-Z0-9-]+.)+[a-zA-Z0-9-]{2,4}$/.test(email);
 }
-
-
-// get all 3 <SELECT> elements
-const selectOption1 = document.getElementById('option1');
-const selectOption2 = document.getElementById('option2');
-const selectOption3 = document.getElementById('option3');
-// when ITEM is SELECTED
-selectOption1.addEventListener('change', function() {
-    changeDropdownList1(selectOption1,selectOption2);
-    changeDropdownList2(selectOption2,selectOption3,selectOption1);
-});
-selectOption2.addEventListener('change', function() {
-    changeDropdownList2(selectOption2,selectOption3,selectOption1);
-});
-// add LIST ELEMENTS to second <SELECT> based on SELECTED ITEM in the first <SELECT>
 function changeDropdownList1(selectOption1,selectOption2) {
-
     const option1 = selectOption1.value;
 
     if(option1 === '1'){
@@ -242,7 +326,6 @@ function changeDropdownList1(selectOption1,selectOption2) {
 }
 
 function changeDropdownList2(selectOption1,selectOption2, selectParent) {
-
     const selectParentValue = selectParent.value;
     const selectOption1Value = selectOption1.value;
 
@@ -305,17 +388,77 @@ function changeDropdownList2(selectOption1,selectOption2, selectParent) {
     }
 }
 
-const creditCard = document.getElementById('creditCard');
-const cardNumber = document.getElementById('cardNumber');
-const cardHolder = document.getElementById('cardHolder');
-const expDateLabel = document.getElementById('expDateLabel');
-const expDateMonth = document.getElementById('expDateMonth');
-const expDateYear = document.getElementById('expDateYear');
-const cvv = document.getElementById('cvv');
-const saveInfo = document.getElementById('saveInfo');
+function ageFromDate(birthday) {
+    const today = new Date();
+    const birthDate = new Date(birthday);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 
+function countChar1(string) {
+    const charCount = string.length;
+    const charLimit = document.getElementById('charLimit1');
+    charLimit.innerText = charCount+' of 20';
+    console.log(charCount);
+}
+
+function countChar2(string) {
+    const charCount = string.length;
+    const charLimit = document.getElementById('charLimit2');
+    charLimit.innerText = charCount+' of 20';
+    console.log(charCount);
+}
+
+function removeCard() {
+    cardNumber.classList.remove('active');
+    cardNumber.parentElement.classList.remove('active');
+    cardHolder.classList.remove('active');
+    cardHolder.parentElement.classList.remove('active');
+    expDateLabel.classList.remove('active');
+    expDateLabel.parentElement.classList.remove('active');
+    expDateMonth.classList.remove('active');
+    expDateYear.classList.remove('active');
+    cvv.classList.remove('active');
+    cvv.parentElement.classList.remove('active');
+    saveInfo.classList.remove('active');
+}
+
+name.addEventListener('keyup', () => {
+    countChar1(name.value.trim());
+});
+surname.addEventListener('keyup', () => {
+    countChar2(surname.value.trim());
+});
+name.addEventListener('change', () => {checkName();});
+surname.addEventListener('change', () => {checkSurname();});
+password.addEventListener('change', () => {checkPassword();});
+password2.addEventListener('change', () => {checkPassword2();});
+email.addEventListener('keyup', () => {checkEmail();});
+birthDate.addEventListener('change', () => {checkBirthDate()});
+tel1.addEventListener('change', () => {checkTel();});
+tel2.addEventListener('change', () => {checkTel();});
+age.addEventListener('change', () => {checkAge();});
+gender.addEventListener('change', () => {checkGender();});
+address.addEventListener('change', () => {checkAddress();});
+country.addEventListener('change', () => {checkCountry();});
+city.addEventListener('change', () => {checkCity();});
+zip.addEventListener('change', () => {checkZip();});
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    checkInputs();
+})
+selectOption1.addEventListener('change', function() {
+    changeDropdownList1(selectOption1,selectOption2);
+    changeDropdownList2(selectOption2,selectOption3,selectOption1);
+});
+selectOption2.addEventListener('change', function() {
+    changeDropdownList2(selectOption2,selectOption3,selectOption1);
+});
 creditCard.addEventListener('click', function() {
-
     paymentPayPal.classList.remove('active');
     paymentBank.classList.remove('active');
 
@@ -331,58 +474,19 @@ creditCard.addEventListener('click', function() {
     cvv.parentElement.classList.add('active');
     saveInfo.classList.add('active');
 });
-
-const paypal = document.getElementById('paypal');
-const paymentPayPal = document.getElementById('paymentPayPal');
-
 paypal.addEventListener('click', function() {
-
-    paymentBank.classList.remove('active');
-    cardNumber.classList.remove('active');
-    cardNumber.parentElement.classList.remove('active');
-    cardHolder.classList.remove('active');
-    cardHolder.parentElement.classList.remove('active');
-    expDateLabel.classList.remove('active');
-    expDateLabel.parentElement.classList.remove('active');
-    expDateMonth.classList.remove('active');
-    expDateYear.classList.remove('active');
-    cvv.classList.remove('active');
-    cvv.parentElement.classList.remove('active');
-    saveInfo.classList.remove('active');
-
     paymentPayPal.classList.add('active');
+    paymentBank.classList.remove('active');
+
+    removeCard();
+
 });
-
-const transfer = document.getElementById('transfer');
-const paymentBank = document.getElementById('paymentBank');
-
 transfer.addEventListener('click', function() {
+    paymentBank.classList.add('active');
+    paymentPayPal.classList.remove('active');
+    removeCard();
 
-
-        paymentPayPal.classList.remove('active');
-        cardNumber.classList.remove('active');
-        cardNumber.parentElement.classList.remove('active');
-        cardHolder.classList.remove('active');
-        cardHolder.parentElement.classList.remove('active');
-        expDateLabel.classList.remove('active');
-        expDateLabel.parentElement.classList.remove('active');
-        expDateMonth.classList.remove('active');
-        expDateYear.classList.remove('active');
-        cvv.classList.remove('active');
-        cvv.parentElement.classList.remove('active');
-        saveInfo.classList.remove('active');
-
-        paymentBank.classList.add('active');
 });
-
-
-function ageFromDate(birthday) {
-    const today = new Date();
-    const birthDate = new Date(birthday);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-}
+checkboxCode.addEventListener('click', function() {
+    discountCode.classList.toggle('active');
+});

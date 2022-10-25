@@ -193,6 +193,13 @@ input[type=checkbox]:checked + label:before{
 
 }
 
+.charLimit {
+    color: #8f8f8f;
+    padding-left: 330px;
+    visibility: visible;
+    font-size: 0.7em;
+}
+
 .expDate {
     display: flex;
     flex-wrap: wrap;
@@ -244,6 +251,14 @@ input[type=checkbox]:checked + label:before{
     display: block;
 }
 
+.discountCode {
+    visibility: hidden;
+}
+
+.discountCode.active {
+    visibility: visible;
+}
+
 .textLabel {
     color: #797979;
     font-size: 1.1em;
@@ -256,7 +271,7 @@ button {
     background: rgba(0, 0, 0, 0.5);
     color: #ffffff;
     font-size: 1em;
-    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px 0;
     font-family: inherit;
     cursor: pointer;
@@ -268,6 +283,7 @@ button:hover {
     color: #111111;
     transform: scale(1.1);
     transition: 0.5s;
+    font-weight: bold;
 }
 
 button:focus {
@@ -309,4 +325,11 @@ input:focus {
 .textBox {
     width: 90%;
     margin: 0;
+}
+
+textarea:focus {
+    outline: none;
+    transform: scale(1.1);
+    transition: 0.3s;
+    border-bottom: darkorange 2px solid;
 }
