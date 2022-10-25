@@ -261,7 +261,10 @@ function checkInputs() {
     checkCity();
     checkAddress();
     checkZip();
+    checkTerms();
+}
 
+function checkTerms() {
     const checkboxTermsValue = checkboxTerms.checked;
     if(!checkboxTermsValue) {
         setErrorFor(checkboxTerms, 'Required');
@@ -433,20 +436,20 @@ name.addEventListener('keyup', () => {
 surname.addEventListener('keyup', () => {
     countChar2(surname.value.trim());
 });
-name.addEventListener('change', () => {checkName();});
-surname.addEventListener('change', () => {checkSurname();});
-password.addEventListener('change', () => {checkPassword();});
-password2.addEventListener('change', () => {checkPassword2();});
+name.addEventListener('keyup', () => {checkName();});
+surname.addEventListener('keyup', () => {checkSurname();});
+password.addEventListener('keyup', () => {checkPassword();});
+password2.addEventListener('keyup', () => {checkPassword2();});
 email.addEventListener('keyup', () => {checkEmail();});
-birthDate.addEventListener('change', () => {checkBirthDate()});
-tel1.addEventListener('change', () => {checkTel();});
-tel2.addEventListener('change', () => {checkTel();});
-age.addEventListener('change', () => {checkAge();});
-gender.addEventListener('change', () => {checkGender();});
-address.addEventListener('change', () => {checkAddress();});
+birthDate.addEventListener('keyup', () => {checkBirthDate()});
+tel1.addEventListener('keyup', () => {checkTel();});
+tel2.addEventListener('keyup', () => {checkTel();});
+age.addEventListener('keyup', () => {checkAge();});
+gender.addEventListener('keyup', () => {checkGender();});
+address.addEventListener('keyup', () => {checkAddress();});
 country.addEventListener('change', () => {checkCountry();});
-city.addEventListener('change', () => {checkCity();});
-zip.addEventListener('change', () => {checkZip();});
+city.addEventListener('keyup', () => {checkCity();});
+zip.addEventListener('keyup', () => {checkZip();});
 form.addEventListener('submit', e => {
     e.preventDefault();
     checkInputs();
@@ -487,6 +490,7 @@ transfer.addEventListener('click', function() {
     removeCard();
 
 });
+checkboxTerms.addEventListener('change', function() {checkTerms();});
 checkboxCode.addEventListener('click', function() {
     discountCode.classList.toggle('active');
 });

@@ -195,9 +195,12 @@ input[type=checkbox]:checked + label:before{
 
 .charLimit {
     color: #8f8f8f;
-    padding-left: 330px;
+    padding-left: 325px;
+    padding-top: 8px;
     visibility: visible;
     font-size: 0.7em;
+    position:  absolute;
+
 }
 
 .expDate {
@@ -320,7 +323,6 @@ input:focus {
     transition: 0.3s;
     border-bottom: darkorange 2px solid;
 }
-
 
 .textBox {
     width: 90%;
