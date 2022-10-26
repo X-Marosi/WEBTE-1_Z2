@@ -1,4 +1,5 @@
 console.log('Script loaded');
+
 const form = document.getElementById('form');
 const name = document.getElementById('name');
 const surname = document.getElementById('surname');
@@ -7,7 +8,7 @@ const password2 = document.getElementById('password2');
 const email = document.getElementById('email');
 let age = document.getElementById('age');
 const birthDate = document.getElementById('birthDate');
-const tel1 = document.getElementById('tel1');
+const tel1 = document.getElementById('international');
 const tel2 = document.getElementById('tel2');
 const gender = document.getElementById('gender');
 const country = document.getElementById('country');
@@ -32,6 +33,9 @@ const paypal = document.getElementById('paypal');
 const paymentPayPal = document.getElementById('paymentPayPal');
 const checkboxCode = document.getElementById('checkboxCode');
 const discountCode = document.getElementById('discountCode');
+const modal = document.getElementById('modal');
+const span = document.getElementById('close');
+const order = document.getElementById('order');
 
 function checkName(){
     const nameValue = name.value.trim();
@@ -50,7 +54,10 @@ function checkName(){
     }
     else {
         setSuccessFor(name);
+        return true;
+
     }
+    return false;
 }
 function checkSurname(){
     const surnameValue = surname.value.trim();
@@ -69,9 +76,10 @@ function checkSurname(){
     }
     else {
         setSuccessFor(surname);
+        return true;
     }
+    return false;
 }
-
 function checkPassword(){
     const passwordValue = password.value.trim();
 
@@ -86,9 +94,10 @@ function checkPassword(){
     }
     else {
         setSuccessFor(password);
+        return true;
     }
+    return false;
 }
-
 function checkPassword2(){
     const password2Value = password2.value.trim();
     const passwordValue = password.value.trim();
@@ -101,9 +110,10 @@ function checkPassword2(){
     }
     else {
         setSuccessFor(password2);
+        return true;
     }
+    return false;
 }
-
 function checkEmail(){
     const emailValue = email.value.trim();
 
@@ -115,20 +125,27 @@ function checkEmail(){
     }
     else {
         setSuccessFor(email);
+        return true;
     }
+    return false;
 }
-
 function checkBirthDate(){
     const birthDateValue = birthDate.value.trim();
+    const ageValue = age.value.trim();
 
     if(birthDateValue === '' || birthDateValue === null) {
         setErrorFor(birthDate, 'Birth date cannot be blank');
     }
+    else if(ageFromDate(birthDateValue) !== parseInt(ageValue)) {
+        birthDate.parentElement.classList.add('error');
+    }
     else {
         setSuccessFor(birthDate);
+        setSuccessFor(age);
+        return true;
     }
+    return false;
 }
-
 function checkTel(){
     const phone1Value = tel1.value.trim();
     const phone2Value = tel2.value.trim();
@@ -147,10 +164,10 @@ function checkTel(){
     }
     else {
         setSuccessFor(tel1);
+        return true;
     }
-
+    return false;
 }
-
 function checkAge(){
     const ageValue = age.value.trim();
     const birthDateValue = birthDate.value.trim();
@@ -161,6 +178,7 @@ function checkAge(){
 
     else if(ageFromDate(birthDateValue) !== parseInt(ageValue)) {
         setErrorFor(age, 'Age does not match birth date');
+        birthDate.parentElement.classList.add('error');
         console.log(ageFromDate(birthDateValue));
         console.log(ageValue);
 
@@ -173,23 +191,22 @@ function checkAge(){
     }
     else {
         setSuccessFor(age);
+        setSuccessFor(birthDate);
+        return true;
     }
+    return false;
 }
-
 function checkGender(){
-    const addressValue = address.value.trim();
+    const genderValue = gender.value;
 
-    if(addressValue === '' || addressValue === null) {
-        setErrorFor(address, 'Address cannot be blank');
+    if (genderValue === '0' || genderValue === null) {
+        setErrorFor(gender, 'You must choose');
+    } else {
+        setSuccessFor(gender);
+        return true;
     }
-    else if (addressValue.length > 50) {
-        setErrorFor(address, 'Address cannot be longer than 50 characters');
-    }
-    else {
-        setSuccessFor(address);
-    }
+    return false;
 }
-
 function checkZip(){
     const zipValue = zip.value.trim();
 
@@ -201,9 +218,10 @@ function checkZip(){
     }
     else {
         setSuccessFor(zip);
+        return true;
     }
+    return false;
 }
-
 function checkCity(){
     const cityValue = city.value.trim();
 
@@ -221,9 +239,10 @@ function checkCity(){
     }
     else {
         setSuccessFor(city);
+        return true;
     }
+    return false;
 }
-
 function checkAddress(){
     const addressValue = address.value.trim();
 
@@ -235,54 +254,38 @@ function checkAddress(){
     }
     else {
         setSuccessFor(address);
+        return true;
     }
+    return false;
 }
-
 function checkCountry() {
     const countryValue = country.value;
     if (countryValue === '0' || countryValue === null) {
         setErrorFor(country, 'Country must be selected');
     } else {
         setSuccessFor(country);
+        return true;
     }
+    return false;
 }
-
-function checkInputs() {
-    checkName();
-    checkSurname();
-    checkPassword();
-    checkPassword2();
-    checkEmail();
-    checkBirthDate();
-    checkTel();
-    checkAge();
-    checkGender();
-    checkCountry();
-    checkCity();
-    checkAddress();
-    checkZip();
-    checkTerms();
-}
-
 function checkTerms() {
     const checkboxTermsValue = checkboxTerms.checked;
     if(!checkboxTermsValue) {
         setErrorFor(checkboxTerms, 'Required');
+        return false;
     }
+    return true;
 }
-
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
     formControl.className = 'validation error';
     small.innerText = message;
 }
-
 function setSuccessFor(input) {
     const formControl = input.parentElement;
     formControl.className = 'validation valid';
 }
-
 function isEmail(email) {
     return /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]{3,}@([a-zA-Z0-9-]+.)+[a-zA-Z0-9-]{2,4}$/.test(email);
 }
@@ -292,7 +295,7 @@ function changeDropdownList1(selectOption1,selectOption2) {
     if(option1 === '1'){
         selectOption2.innerHTML = [
             '<option value="0">SELECT SWITCH:</option>',
-            '<option value="0">Holy Panda</option>',
+            '<option value="1">Holy Panda</option>',
             '<option value="1">Gateron Black</option>',
             '<option value="2">Cherry MX Brown</option>',
             '<option value="3">Cherry MX Red</option>',
@@ -300,6 +303,7 @@ function changeDropdownList1(selectOption1,selectOption2) {
             '<option value="5">Cherry MX Silver</option>'
         ];
         selectOption2.classList.add('active');
+        selectOption1.parentElement.classList.remove('error');
     }
     else if(option1 === '2'){
         selectOption2.innerHTML = [
@@ -312,6 +316,7 @@ function changeDropdownList1(selectOption1,selectOption2) {
             '<option value="6">Plastic WHITE w/ RGB strip</option>'
         ];
         selectOption2.classList.add('active');
+        selectOption1.parentElement.classList.remove('error');
     }
     else if(option1 === '3'){
         selectOption2.innerHTML = [
@@ -321,13 +326,17 @@ function changeDropdownList1(selectOption1,selectOption2) {
             '<option value="3">POM</option>'
         ];
         selectOption2.classList.add('active');
+        selectOption1.parentElement.classList.remove('error');
+    }
+    else if(option1 === '0'){
+        selectOption2.classList.remove('active');
+        selectOption3.classList.remove('active');
+        setErrorFor(selectOption1, 'You must choose');
     }
     else {
         selectOption2.classList.remove('active');
-        selectOption3.classList.remove('active');
     }
 }
-
 function changeDropdownList2(selectOption1,selectOption2, selectParent) {
     const selectParentValue = selectParent.value;
     const selectOption1Value = selectOption1.value;
@@ -345,8 +354,8 @@ function changeDropdownList2(selectOption1,selectOption2, selectParent) {
         selectOption2.innerHTML = [
             '<option value="0">TYPE:</option>',
             '<option value="1">FULL BOARD</option>',
-            '<option value="0">TKL</option>',
-            '<option value="0">60%</option>'
+            '<option value="1">TKL</option>',
+            '<option value="1">60%</option>'
         ];
         selectOption2.classList.add('active');
     }
@@ -356,41 +365,43 @@ function changeDropdownList2(selectOption1,selectOption2, selectParent) {
             selectOption2.innerHTML = [
                 '<option value="0">SELECT ABS KEYCAPS:</option>',
                 '<option value="1">Keychron Doubleshot ABS Light Grey</option>',
-                '<option value="0">Keychron Doubleshot ABS Retro</option>',
-                '<option value="0">Keychron Doubleshot ABS Blue and White</option>'
+                '<option value="1">Keychron Doubleshot ABS Retro</option>',
+                '<option value="1">Keychron Doubleshot ABS Blue and White</option>'
             ];
             selectOption2.classList.add('active');
+            selectOption1.parentElement.classList.remove('error');
         }
         else if ( selectOption1Value === '2') {
             selectOption2.innerHTML = [
                 '<option value="0">SELECT PBT KEYCAPS:</option>',
                 '<option value="1">HyperX Pudding PBT Doubleshot WHITE</option>',
-                '<option value="0">HyperX Pudding PBT Doubleshot BLACK</option>',
-                '<option value="0">YMDK Carbon 108 Cherry Keycaps</option>',
-                '<option value="0">Blank White Thick PBT Keycaps</option>'
+                '<option value="1">HyperX Pudding PBT Doubleshot BLACK</option>',
+                '<option value="1">YMDK Carbon 108 Cherry Keycaps</option>',
+                '<option value="1">Blank White Thick PBT Keycaps</option>'
             ];
             selectOption2.classList.add('active');
+            selectOption1.parentElement.classList.remove('error');
         }
         else if ( selectOption1Value === '3') {
             selectOption2.innerHTML = [
                 '<option value="0">SELECT POM KEYCAPS:</option>',
                 '<option value="1">POM Jelly Sugarcube</option>',
-                '<option value="0">POM Jelly Strawberry</option>',
-                '<option value="0">POM Ink Alpha kit</option>',
-                '<option value="0">POM Ink Alpha kit (side etch)</option>',
-                '<option value="0">POM Ink Mod kit</option>',
-                '<option value="0">POM Ash Alpha kit</option>',
-                '<option value="0">POM Ash Alpha kit (side etch_</option>',
-                '<option value="0">POM Ash Mod kit</option>'
+                '<option value="1">POM Jelly Strawberry</option>',
+                '<option value="1">POM Ink Alpha kit</option>',
+                '<option value="1">POM Ink Alpha kit (side etch)</option>',
+                '<option value="1">POM Ink Mod kit</option>',
+                '<option value="1">POM Ash Alpha kit</option>',
+                '<option value="1">POM Ash Alpha kit (side etch_</option>',
+                '<option value="1">POM Ash Mod kit</option>'
             ];
             selectOption2.classList.add('active');
+            selectOption1.parentElement.classList.remove('error');
         }
         else {
             selectOption2.classList.remove('active');
         }
     }
 }
-
 function ageFromDate(birthday) {
     const today = new Date();
     const birthDate = new Date(birthday);
@@ -401,21 +412,18 @@ function ageFromDate(birthday) {
     }
     return age;
 }
-
 function countChar1(string) {
     const charCount = string.length;
     const charLimit = document.getElementById('charLimit1');
     charLimit.innerText = charCount+' of 20';
     console.log(charCount);
 }
-
 function countChar2(string) {
     const charCount = string.length;
     const charLimit = document.getElementById('charLimit2');
     charLimit.innerText = charCount+' of 20';
     console.log(charCount);
 }
-
 function removeCard() {
     cardNumber.classList.remove('active');
     cardNumber.parentElement.classList.remove('active');
@@ -430,6 +438,16 @@ function removeCard() {
     saveInfo.classList.remove('active');
 }
 
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+        return false;
+    }
+}
+span.onclick = function() {
+    modal.style.display = "none";
+    return false;
+}
 name.addEventListener('keyup', () => {
     countChar1(name.value.trim());
 });
@@ -441,18 +459,51 @@ surname.addEventListener('keyup', () => {checkSurname();});
 password.addEventListener('keyup', () => {checkPassword();});
 password2.addEventListener('keyup', () => {checkPassword2();});
 email.addEventListener('keyup', () => {checkEmail();});
-birthDate.addEventListener('keyup', () => {checkBirthDate()});
+birthDate.addEventListener('keyup', () => {checkBirthDate(); checkAge();});
+birthDate.addEventListener('change', () => {checkBirthDate(); checkAge();});
 tel1.addEventListener('keyup', () => {checkTel();});
 tel2.addEventListener('keyup', () => {checkTel();});
-age.addEventListener('keyup', () => {checkAge();});
-gender.addEventListener('keyup', () => {checkGender();});
+age.addEventListener('keyup', () => {checkAge(); checkBirthDate();});
+age.addEventListener('change', () => {checkAge(); checkBirthDate();});
+gender.addEventListener('change', () => {checkGender();});
 address.addEventListener('keyup', () => {checkAddress();});
 country.addEventListener('change', () => {checkCountry();});
 city.addEventListener('keyup', () => {checkCity();});
 zip.addEventListener('keyup', () => {checkZip();});
 form.addEventListener('submit', e => {
-    e.preventDefault();
-    checkInputs();
+    if(checkName() === false) { e.preventDefault(); }
+    else if(checkSurname() === false) { e.preventDefault(); }
+    else if(checkPassword() === false) { e.preventDefault(); }
+    else if(checkPassword2() === false) { e.preventDefault(); }
+    else if(checkEmail() === false) { e.preventDefault(); }
+    else if(checkBirthDate() === false) { e.preventDefault(); }
+    else if(checkTel() === false) { e.preventDefault(); }
+    else if(checkAge() === false) { e.preventDefault(); }
+    else if(checkGender() === false) { e.preventDefault(); }
+    else if(checkAddress() === false) { e.preventDefault(); }
+    else if(checkCountry() === false) { e.preventDefault(); }
+    else if(checkCity() === false) { e.preventDefault(); }
+    else if(checkZip() === false) { e.preventDefault(); }
+    else if(checkTerms() === false) { e.preventDefault(); }/**/
+    else if (selectOption1.value === '0') {
+            e.preventDefault();
+            setErrorFor(selectOption1, 'You must choose');
+    }
+    else if (selectOption2.value === '0') {
+            e.preventDefault();
+            setErrorFor(selectOption2, 'You must choose');
+    }
+    else if (selectOption3.value === '0') {
+            e.preventDefault();
+            setErrorFor(selectOption3, 'You must choose');
+    }
+    else {
+        order.innerText = 'Order: \n'
+            +selectOption1.options[selectOption1.selectedIndex].text
+            +'\n'+selectOption2.options[selectOption2.selectedIndex].text
+            + '\n' + selectOption3.options[selectOption3.selectedIndex].text;
+        modal.style.display = "block";
+    }
 })
 selectOption1.addEventListener('change', function() {
     changeDropdownList1(selectOption1,selectOption2);
@@ -460,6 +511,20 @@ selectOption1.addEventListener('change', function() {
 });
 selectOption2.addEventListener('change', function() {
     changeDropdownList2(selectOption2,selectOption3,selectOption1);
+    if(selectOption2.value !== '0') {
+        selectOption2.parentElement.classList.remove('error');
+    }
+    else {
+        setErrorFor(selectOption2, 'You must choose');
+    }
+});
+selectOption3.addEventListener('change', function() {
+    if(selectOption3.value !== '0') {
+        selectOption3.parentElement.classList.remove('error');
+    }
+    else {
+        setErrorFor(selectOption3, 'You must choose');
+    }
 });
 creditCard.addEventListener('click', function() {
     paymentPayPal.classList.remove('active');

@@ -2,14 +2,12 @@
     font-family: 'Technical';
     src: url('../style/fonts/CODE Light.otf');
 }
-
 ::selection {
     background: darkorange; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
     background: darkorange; /* Gecko Browsers */
 }
-
 html {
 
     font-family: "Microsoft JhengHei Light", Arial, sans-serif;
@@ -26,7 +24,15 @@ h1{
     margin-bottom: 0;
     cursor: default;
 }
+h2{
+    font-family: 'Technical', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    width: 150px;
+    cursor: default;
 
+}
 img {
     width: 100px;
     height: 100px;
@@ -37,18 +43,6 @@ img {
     filter: invert(100%);
 
 }
-
-h2{
-    font-family: 'Technical', sans-serif;
-    font-size: 30px;
-    color: #fff;
-    border-bottom: 1px solid #fff;
-    width: 150px;
-    cursor: default;
-
-}
-
-
 .form {
     margin: 0;
     padding-bottom: 50px;
@@ -57,27 +51,20 @@ h2{
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .left {
-    /*border: 1px solid #00ff00;*/
     width: 400px;
 }
 .right {
-    /*border: 1px solid #0000ff;*/
     width: 400px;
 }
-
 small {
     cursor: default;
 }
-
 .validation small {
     color: #e74c3c;
     visibility: hidden;
     padding-left: 8px;
 }
-
-
 .validation.valid input {
     border-bottom: 2px solid #2ecc71;
 }
@@ -93,18 +80,14 @@ small {
 .validation.error select {
     border-bottom: 2px solid #e74c3c;
 }
-
-
 .validation.error small {
     visibility: visible;
 }
-
 .optional {
     color: #8f8f8f;
     padding-left: 15px;
     visibility: visible;
 }
-
 select {
     width: 92%;
     border: none;
@@ -113,18 +96,12 @@ select {
     font-family: inherit;
     background-color: rgba(0, 0, 0, 0.09);
 }
-
-
-
 .specificationList {
     visibility: hidden;
 }
-
 .specificationList.active {
     visibility: visible;
 }
-
-
 option {
     font-size: 0.9em;
     font-family: inherit;
@@ -132,7 +109,6 @@ option {
     color: darkorange;
 
 }
-
 .date {
     width: 92%;
     border: none;
@@ -142,10 +118,7 @@ option {
     background: rgba(0, 0, 0, 0.09);
 
 }
-
-
 .payment {
-
     width: 92%;
     border: none;
     color: #ffffff;
@@ -153,11 +126,9 @@ option {
     font-family: inherit;
     background: transparent;
 }
-
 .paymentOptions {
     margin-bottom: 20px;
 }
-
 input[type=radio], input[type=checkbox] {
     /* Hide original inputs */
     visibility: hidden;
@@ -190,9 +161,7 @@ input[type=checkbox]:checked + label:before{
     content: "\2713";
     border: transparent;
     background-color: transparent;
-
 }
-
 .charLimit {
     color: #8f8f8f;
     padding-left: 325px;
@@ -200,15 +169,12 @@ input[type=checkbox]:checked + label:before{
     visibility: visible;
     font-size: 0.7em;
     position:  absolute;
-
 }
-
 .expDate {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
-
 .numBox {
     width: 50px;
     height: 30px;
@@ -229,39 +195,60 @@ input[type=checkbox]:checked + label:before{
     background: rgba(0, 0, 0, 0.09);
     margin-right: 10px;
 }
-
 .paymentCard{
     display: none;
 }
-
 .paymentCard.active {
     display: block;
 }
-
 .paymentPayPal {
     display: none;
 }
-
 .paymentPayPal.active {
     display: block;
 }
-
 .paymentBank {
     display: none;
 }
-
 .paymentBank.active {
     display: block;
 }
-
 .discountCode {
     visibility: hidden;
 }
-
 .discountCode.active {
     visibility: visible;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.mHtml {
+    background: #1c1c1c linear-gradient(#2d2d2d, #1c1c1c) no-repeat;
+    color: #fff;
+    margin: auto;
+    width: 280px;
+}
+.mHeader {
+    padding: 5px 20px;
+    background-color: darkorange;
+    color: white;
+    border-bottom: 1px solid #797373;
+}
+.mBody {
+    padding: 2px 16px;
+}
 
+.close{
+    cursor: pointer;
+    color: black;
+    float: right;
+}
 .textLabel {
     color: #797979;
     font-size: 1.1em;
@@ -280,7 +267,6 @@ button {
     cursor: pointer;
     display: block;
 }
-
 button:hover {
     background-color: darkorange;
     color: #111111;
@@ -288,22 +274,12 @@ button:hover {
     transition: 0.5s;
     font-weight: bold;
 }
-
-button:focus {
-    outline: none;
-    background-color: darkorange;
-    color: #111111;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
 select:focus {
     outline: none;
     transform: scale(1.1);
     transition: 0.3s;
     border-bottom: darkorange 2px solid;
 }
-
 .textBox{
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.09);
@@ -312,23 +288,19 @@ select:focus {
     font-size: 1.1em;
     font-family: inherit;
 }
-
 ::placeholder {
     color: #797979;
 }
-
 input:focus {
     outline: none;
     transform: scale(1.1);
     transition: 0.3s;
     border-bottom: darkorange 2px solid;
 }
-
 .textBox {
     width: 90%;
     margin: 0;
 }
-
 textarea:focus {
     outline: none;
     transform: scale(1.1);

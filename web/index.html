@@ -2,8 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="../style/index.css">
         <script defer src="../scripts/index.js"></script>
@@ -15,147 +14,138 @@
         <img src="../style/images/switch_logo.png" alt="">
 
         <div class="container">
-            <form id="form" class="form">
+            <form id="form" class="form" action="https://form2mail.hynix.sk/form2mail.php" target="_blank" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="apikey" value="ab0d31f926004b333380a48132c27911">
+                <input type="hidden" name="from" value="xmarosi@stuba.sk">
+                <input type="hidden" name="sender" value="xmarosi">
+                <input type="hidden" name="to" value="marosi.peter2@gmail.com">
+                <input type="hidden" name="subject" value="Form Peter Marosi">
+                <input type="hidden" name="redirectOk" value="https://webte1.fei.stuba.sk/~xmarosi/z2/web/index.html">
+                <input type="hidden" name="redirectFalse" value="https://webte1.fei.stuba.sk/~xmarosi/z2/web/index.html">
                 <div class="left">
-                    <h2>Register</h2>
 
+
+
+
+                    <h2>Register</h2>
                     <div class="validation">
                         <label class="name charLimit" id="charLimit1" for="name">0 of 20</label>
-                        <input type="text" class="name textBox" id="name" placeholder="NAME:">
+                        <input name="First Name" type="text" class="name textBox" id="name" placeholder="NAME:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label class="charLimit"  id="charLimit2" for="surname">0 of 20</label>
-                        <input type="text" class="textBox" id="surname" placeholder="SURNAME:">
+                        <input name="Last Name" type="text" class="textBox" id="surname" placeholder="SURNAME:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label for="email"></label>
-                        <input type="text" class="textBox" id="email" placeholder="EMAIL:">
+                        <input name="Email" type="text" class="textBox" id="email" placeholder="EMAIL:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label for="password"></label>
-                        <input type="password" class="textBox" id="password" placeholder="PASSWORD:">
+                        <input name="Password" type="password" class="textBox" id="password" placeholder="PASSWORD:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label for="password2"></label>
                         <input type="password" class="textBox" id="password2" placeholder="CONFIRM PASSWORD:">
                         <small>Error message</small>
                     </div>
-
-
                     <div class="validation">
-                        <label class="textLabel" for="tel1">PHONE:</label>
+                        <label class="textLabel" for="international">PHONE:</label>
                         <div class="expDate">
-                            <input type="text" class="numBox" id="tel1" placeholder="+421">
+                            <input name="International" type="text" class="numBox" id="international" placeholder="+421">
                             <label for="tel2"></label>
-                            <input type="text" class="numBoxWide" id="tel2" placeholder="">
+                            <input name="Tel" type="text" class="numBoxWide" id="tel2" placeholder="">
                             <small>Error message</small>
                         </div>
-
-
                     </div>
-
-
                     <div class="validation">
                         <label for="gender"></label>
-                        <select id="gender">
+                        <select name="Gender" id="gender">
                             <option value="0">SEX:</option>
-                            <option value="1">MALE</option>
-                            <option value="2">FEMALE</option>
-                            <option value="3">OTHER</option>
+                            <option value="Male">MALE</option>
+                            <option value="Female">FEMALE</option>
+                            <option value="Other">OTHER</option>
                         </select>
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label class="textLabel" for="birthDate">BIRTH DATE:</label>
-                        <input type="date" class="date" id="birthDate" placeholder="MM//DD//YY">
-
+                        <input name="Birth Date" type="date" class="date" id="birthDate" placeholder="MM//DD//YY">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label for="age"></label>
-                        <input type="number" class="textBox" id="age" placeholder="AGE:">
+                        <input name="Age" type="number" class="textBox" id="age" placeholder="AGE:">
                         <small>Error message</small>
                     </div>
 
-                    <h2>Shipping</h2>
 
+
+                    <h2>Shipping</h2>
                     <div class="validation">
                         <label for="country"></label>
-                        <select id="country">
+                        <select name="Country" id="country">
                             <option value="0">COUNTRY:</option>
-                            <option value="1">Bulgaria</option>
-                            <option value="2">Germany</option>
-                            <option value="3">France</option>
-                            <option value="4">Spain</option>
-                            <option value="5">Italy</option>
-                            <option value="5">Slovakia</option>
-                            <option value="5">Czech Republic</option>
-                            <option value="5">Poland</option>
-                            <option value="5">Romania</option>
-                            <option value="5">Hungary</option>
-                            <option value="5">Greece</option>
-                            <option value="5">Portugal</option>
-                            <option value="5">Austria</option>
-                            <option value="5">Croatia</option>
-                            <option value="5">Serbia</option>
-                            <option value="5">Slovenia</option>
-                            <option value="5">Bosnia and Herzegovina</option>
-                            <option value="5">Switzerland</option>
-                            <option value="5">Netherlands</option>
-                            <option value="5">Belgium</option>
-                            <option value="5">Denmark</option>
-                            <option value="5">Sweden</option>
-                            <option value="5">Norway</option>
-                            <option value="5">Finland</option>
-                            <option value="5">Ireland</option>
-                            <option value="5">United Kingdom</option>
-                            <option value="5">Luxembourg</option>
+                            <option value="Bulgaria">Bulgaria</option>
+                            <option value=">Germany">Germany</option>
+                            <option value="France">France</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Slovakia">Slovakia</option>
+                            <option value="Czech Republic">Czech Republic</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Serbia">Serbia</option>
+                            <option value="Slovenia">Slovenia</option>
+                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Finland">Finland</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Luxembourg">Luxembourg</option>
                         </select>
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label for="city"></label>
-                        <input type="text" class="textBox" id="city" placeholder="CITY:">
+                        <input name="City" type="text" class="textBox" id="city" placeholder="CITY:">
                         <small>Error message</small>
                     </div>
-
-
                     <div class="validation">
                         <label for="address"></label>
-                        <input type="text" class="textBox" id="address" placeholder="ADDRESS:">
+                        <input name="Address" type="text" class="textBox" id="address" placeholder="ADDRESS:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation">
                         <label for="zip"></label>
-                        <input type="text" class="textBox" id="zip" placeholder="ZIP:">
+                        <input name="Zip" type="text" class="textBox" id="zip" placeholder="ZIP:">
                         <small>Error message</small>
                     </div>
-
                     <div class="checkbox">
-                        <input type="checkbox" id="checkboxSave">
+                        <input name="Save my info" type="checkbox" id="checkboxSave">
                         <label for="checkboxSave">Save my information for next time</label>
                         <small class="optional"> (Optional) </small>
                     </div>
                 </div>
-
-
                 <div class="right">
                     <h2>Order</h2>
                     <div class="validation">
                         <label for="option1"></label>
-                        <select id="option1">
+                        <select name="Product" id="option1">
                             <option value="0">SELECT PRODUCT:</option>
                             <option value="1">SWITCHES</option>
                             <option value="2">FRAME</option>
@@ -165,99 +155,96 @@
                     </div>
                     <div class="validation">
                         <label for="option2"></label>
-                        <select class="specificationList" id="option2">
+                        <select name="Type" class="specificationList" id="option2">
+
                         </select>
                         <small> Error message </small>
                     </div>
                     <div class="validation">
                         <label for="option3"></label>
-                        <select class="specificationList" id="option3">
+                        <select name="Specification" class="specificationList" id="option3">
                         </select>
                         <small> Error message </small>
                     </div>
-
                     <label class="textLabel" for="comment"></label>
-                    <textarea class="textBox" id="comment" placeholder="ADD COMMENTS TO YOUR ORDER:"></textarea>
+                    <textarea name="Comments" class="textBox" id="comment" placeholder="ADD COMMENTS TO YOUR ORDER:"></textarea>
+
+
+
 
                     <h2>Payment</h2>
-
                     <div class="paymentOptions">
                         <div class="payment">
-                            <input type="radio" id="creditCard" name="payment" value="creditCard">
+                            <input  type="radio" id="creditCard" name="Payment" value="creditCard">
                             <label for="creditCard">Credit Card</label>
                         </div>
-
                         <div class="payment">
-                            <input type="radio"  id="paypal" name="payment" value="paypal">
+                            <input type="radio"  id="paypal" name="Payment" value="paypal">
                             <label for="paypal">Paypal</label>
                         </div>
-
                         <div class="payment">
-                            <input type="radio"  id="transfer" name="payment" value="transfer">
+                            <input type="radio"  id="transfer" name="Payment" value="transfer">
                             <label for="transfer">Bank Transfer</label>
                         </div>
-
                     </div>
-
                     <div class="validation paymentCard">
                         <label for="cardNumber"></label>
-                        <input type="text" class="textBox paymentCard" id="cardNumber" placeholder="CARD NUMBER:">
+                        <input name="Card Number" type="text" class="textBox paymentCard" id="cardNumber" placeholder="CARD NUMBER:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation paymentCard">
                         <label for="cardHolder"></label>
-                        <input type="text"  class="textBox paymentCard" id="cardHolder" placeholder="CARD HOLDER:">
+                        <input name="Card Holder" type="text"  class="textBox paymentCard" id="cardHolder" placeholder="CARD HOLDER:">
                         <small>Error message</small>
                     </div>
-
                     <div class="validation paymentCard">
                         <label class="textLabel paymentCard" for="expDateMonth" id="expDateLabel">EXP. DATE:</label>
                         <div class="expDate">
-
-                            <input type="text" class="numBox paymentCard" id="expDateMonth" placeholder="MM">
+                            <input name="Exp.Date Month" type="text" class="numBox paymentCard" id="expDateMonth" placeholder="MM">
                             <label for="expDateYear"></label>
-                            <input type="text" class="numBox paymentCard" id="expDateYear" placeholder="YY">
+                            <input name="Exp.Date Year" type="text" class="numBox paymentCard" id="expDateYear" placeholder="YY">
                         </div>
-
                         <small>Error message</small>
                     </div>
-
                     <div class="validation paymentCard">
                         <label for="cvv"></label>
-                        <input type="text" class="textBox paymentCard" id="cvv" placeholder="CVV:">
+                        <input name="CVV" type="text" class="textBox paymentCard" id="cvv" placeholder="CVV:">
                         <small>Error message</small>
                     </div>
-
-
                     <div class="paymentCard" id="saveInfo">
-                        <input type="checkbox" id="checkboxSaveCard">
+                        <input name="Save my card" type="checkbox" id="checkboxSaveCard">
                         <label for="checkboxSaveCard">Save my card information for later</label>
                         <small class="optional"> (Optional) </small>
                     </div>
-
-
                     <button class="paymentPayPal" id="paymentPayPal" type="button">
                         PayPal
                     </button>
                     <p class="paymentBank" id="paymentBank"> <span class="textLabel">After placing your order send the payment to the following account to complete your order.<br><br></span><span class="textBox">SK68 0720 0002 8919 8742 6353</span></p>
-
-
                     <div class="validation">
-                        <input type="checkbox" id="checkboxTerms">
+                        <input name="Terms" type="checkbox" id="checkboxTerms">
                         <label for="checkboxTerms">I agree to the terms and conditions</label>
                         <small>Error message</small>
                     </div>
-
-                    <input type="checkbox" id="checkboxCode">
+                    <input name="I have a discount code:" type="checkbox" id="checkboxCode">
                     <label for="checkboxCode">I have a discount code</label>
                     <small class="optional"> (Hidden textarea) </small>
 
                     <label for="discountCode"></label>
-                    <textarea name="discountCode" class="textBox discountCode" id="discountCode" cols="30" rows="1">PETER MAROSI</textarea>
-
-
+                    <textarea name="Discount Code (Hidden textarea)" class="textBox discountCode" id="discountCode" cols="30" rows="1">PETER MAROSI</textarea>
                     <button type="submit">PLACE ORDER</button>
+                </div>
+
+
+                <div id="modal" class="modal">
+                    <div class="mHtml">
+                        <div class="mHeader">
+                            <div class="close" id="close">&times;</div>
+                            <h2>Order successful</h2>
+                        </div>
+                        <div class="mBody">
+                            <p id="order">Thank you for your purchase!</p>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
